@@ -25,13 +25,13 @@ __bobby_clock() {
 
 __venv_check() {
     if [ "$VIRTUAL_ENV" != '' ]; then
-        printf "${reset_color}:${yellow}$(python_version_prompt)"
+        printf "${reset_color}${yellow}$(python_version_prompt):"
     fi
 }
 
 function prompt_command() {
     #PS1="${bold_cyan}$(scm_char)${green}$(scm_prompt_info)${purple} $(python_version_prompt) ${yellow}\h ${reset_color}in ${green}\w ${reset_color} \n${green} →${reset_color} "
-    PS1="\n$(battery_char) $(__bobby_clock)${purple}\h ${reset_color}in ${green}\w$(__venv_check)${reset_color}  \n ${bold_cyan}$(scm_prompt_char_info) ${green}→${reset_color} "
+    PS1="\n$(battery_char) $(__bobby_clock)${purple}\h ${reset_color}in $(__venv_check)${green}\w${reset_color}  \n ${bold_cyan}$(scm_prompt_char_info) ${green}→${reset_color} "
 }
 
 THEME_SHOW_CLOCK_CHAR=${THEME_SHOW_CLOCK_CHAR:-"true"}
